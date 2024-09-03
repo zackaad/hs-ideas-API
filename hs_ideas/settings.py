@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-*$#&)jt5%f1zeb(%23^t^rqh4dmk@4&%(ztp1++ie$do=4*wr=
 # Remember to set to false
 DEBUG = False
 
-ALLOWED_HOSTS = ['*.awsapprunner.com']
+ALLOWED_HOSTS = ['.awsapprunner.com', 'https://bpppgveecw.eu-central-1.awsapprunner.com']
 
 STATIC_URL = 'static/'
 
