@@ -8,3 +8,4 @@ staticfiles
 hs_ideas/settings_local.py
 .idea
 random
+hs_ideas_main/migrations

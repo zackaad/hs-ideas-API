@@ -1,7 +1,7 @@
-from django.http import HttpResponse
-from django.views import View
+from django.http import JsonResponse
+from rest_framework import views
 
 
-class MyView(View):
-    def get(self, request, *args, **kwargs):
-        return HttpResponse("Hello, World!")
+class MyView(views.APIView):
+    def get(self, request):
+        return JsonResponse({'msg': 'Hello world!'}, status=200)
