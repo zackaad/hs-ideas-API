@@ -12,8 +12,14 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import json
-import dj_database_url
-from os import environ
+import os
+import environ
+
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -92,12 +98,15 @@ WSGI_APPLICATION = 'hs_ideas.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-if "DATABASE_SECRET" in environ:
-    database_secret = environ.get("DATABASE_SECRET")
-    db_url = json.loads(database_secret)["DATABASE_URL"]
-    DATABASES = {"default": dj_database_url.parse(db_url)}
-else:
-    DATABASES = {"default": dj_database_url.parse("sqlite:///db.sqlite3")}
+DATABASES = {
+
+    'default': env.db(),
+
+    'extra': env.db_url(
+        'SQLITE_URL',
+        default='sqlite:////tmp/my-tmp-sqlite.db'
+    )
+}
 
 
 # Password validation
