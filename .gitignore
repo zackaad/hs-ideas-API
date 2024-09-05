@@ -7,5 +7,5 @@ media
 staticfiles
 hs_ideas/settings_local.py
 .idea
-random
+local_files
 hs_ideas_main/migrations
